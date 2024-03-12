@@ -1,0 +1,29 @@
+{
+  "heroes": [
+    {
+      "name": "Sergei",
+      "description": "Плясать шо глухонямой",
+      "element": "fire",
+      "id": 1
+    },
+    {
+      "name": "Wither",
+      "description": "Сдавать хаты шо глухонямая",
+      "element": "earth",
+      "id": 2
+    },
+    {
+      "name": "Sergei",
+      "description": "sdfgsdfg",
+      "element": "wind",
+      "id": 4
+    }
+  ],
+  "filters": [
+    "all",
+    "fire",
+    "water",
+    "wind",
+    "earth"
+  ]
+}
