@@ -1,6 +1,7 @@
 import {useHttp} from '../../hooks/http.hook';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
 
 import { heroesFetching, heroesFetched, heroesFetchingError, removeHero } from '../../actions';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
@@ -14,10 +15,28 @@ import Spinner from '../spinner/Spinner';
 
 
 const HeroesList = () => {
-    const {filters, startFilter, heroes, heroesLoadingStatus } = useSelector(state => state);  
-
+    // const {filters, startFilter, heroes, heroesLoadingStatus } = useSelector(state => state);  
+		const startFilter = useSelector(state => state.filters.startFilter)
+		const filters = useSelector(state => state.filters.filters)
+		const heroes = useSelector(state => state.heroes.heroes)
+		const heroesLoadingStatus = useSelector(state => state.heroes.heroesLoadingStatus)
 		
 
+		const filteredHeroesSelector = createSelector(
+			(state) => state.filters.activeBtn,
+			(state) => state.heroes.heroes,
+			(filter, heroes) => {
+				console.log(filter)
+				if (filter === 'all') {
+					console.log('render');
+					return heroes;
+				} else {
+					return heroes.filter(item => item.element === filter)
+				}
+			}
+		)
+
+		const filteredHeroes = useSelector(filteredHeroesSelector)
     const dispatch = useDispatch();
     const {request} = useHttp();
 
@@ -41,7 +60,7 @@ const HeroesList = () => {
         return <h5 className="text-center mt-5">Ошибка загрузки</h5>
     }
 
-    const renderHeroesList = (heroes, filters) => {
+    const renderHeroesList = (heroes) => {
         if (heroes.length === 0) {
             return <h5 className="text-center mt-5">Героев пока нет</h5>
         }
@@ -51,10 +70,10 @@ const HeroesList = () => {
             return <HeroesListItem key={props.id} handleDelHero={handleDelHero} {...props}/>
         })
 				} else {
-					if (filters.length === 0) {
+					if (filteredHeroes.length === 0) {
 						return <h5 className="text-center mt-5">Таких героев нет</h5>
 					}
-					return filters.map(({...props}) => {
+					return filteredHeroes.map(({...props}) => {
             return <HeroesListItem key={props.id} handleDelHero={handleDelHero} {...props}/>
         })
 				}
@@ -62,7 +81,7 @@ const HeroesList = () => {
         
     }
 
-    const elements = renderHeroesList(heroes, filters);
+    const elements = renderHeroesList(heroes);
     return (
         <ul>
             {elements}

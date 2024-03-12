@@ -17,6 +17,18 @@
       "description": "sdfgsdfg",
       "element": "wind",
       "id": 4
+    },
+    {
+      "name": "Thor",
+      "description": "Плясать шо глухонямой",
+      "element": "wind",
+      "id": 5
+    },
+    {
+      "name": "Spider-Man",
+      "description": "Плясать шо глухонямой",
+      "element": "fire",
+      "id": 6
     }
   ],
   "filters": [

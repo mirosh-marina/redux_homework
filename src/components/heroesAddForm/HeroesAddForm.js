@@ -31,7 +31,7 @@ const MyTextInput = ({ label, ...props }) => {
 const HeroesAddForm = () => {
   const dispatch = useDispatch();
   const { request } = useHttp();
-	const {startFilter, activeBtn } = useSelector(state => state)
+	const {startFilter, activeBtn } = useSelector(state => state.filters)
 
 	const isFilter = (data) => {
 		if (startFilter === 'yes' && data.payload.element === activeBtn) {

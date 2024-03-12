@@ -12,7 +12,7 @@ const HeroesFilters = () => {
 
 		
 		const dispatch = useDispatch();	
-		const {activeBtn} = useSelector(state => state);
+		const {activeBtn} = useSelector(state => state.filters);
 
 		const handleClick = (e) => {
 			const btns = document.querySelectorAll('.btn');
