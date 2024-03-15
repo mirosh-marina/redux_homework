@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { startFilter, delFilter, addActiveFilterElement } from "./filtersSlice";
 
+
 // Задача для этого компонента:
 // Фильтры должны формироваться на основании загруженных данных
 // Фильтры должны отображать только нужных героев при выборе
@@ -8,16 +9,16 @@ import { startFilter, delFilter, addActiveFilterElement } from "./filtersSlice";
 // Изменять json-файл для удобства МОЖНО!
 // Представьте, что вы попросили бэкенд-разработчика об этом
 
-const HeroesFilters = () => {
+const HeroesFilters = () => {	
 		
 		const dispatch = useDispatch();			
 
 		const handleClick = (e) => {
-			e.target.id === 'all' ? dispatch(delFilter()) : dispatch(startFilter());			
+			dispatch(addActiveFilterElement(e.target.id))						
 			const btns = document.querySelectorAll('.btn');
 			btns.forEach(btn => btn.className.includes('active') ? btn.className = btn.className.replace(/\bactive\b/g, '').trim() : '')
 			e.target.classList.add('active');
-			dispatch(addActiveFilterElement(e.target.id))
+			
 		}
 
     return (

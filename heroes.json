@@ -7,15 +7,15 @@
       "id": 2
     },
     {
-      "name": "Sergei",
-      "description": "sdfgsdfg",
-      "element": "wind",
-      "id": 4
-    },
-    {
-      "name": "Spider-Man",
+      "name": "Thor",
       "description": "Плясать шо глухонямой",
       "element": "fire",
+      "id": 5
+    },
+    {
+      "name": "Thor",
+      "description": "Плясать шо глухонямой",
+      "element": "water",
       "id": 6
     }
   ],

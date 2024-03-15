@@ -1,9 +1,8 @@
 import { useHttp } from "../../hooks/http.hook";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createSelector } from "@reduxjs/toolkit";
 
-import { heroDeleted, fetchHeroes } from "./heroesSlice";
+import { heroDeleted, fetchHeroes, filteredHeroesSelector } from "./heroesSlice";
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from "../spinner/Spinner";
 
@@ -13,25 +12,14 @@ import Spinner from "../spinner/Spinner";
 // Удаление идет и с json файла при помощи метода DELETE
 
 const HeroesList = () => {
-  // const {filters, startFilter, heroes, heroesLoadingStatus } = useSelector(state => state);
+  
   const startFilter = useSelector((state) => state.filters.startFilter);
-
-  const heroes = useSelector((state) => state.heroes.heroes);
+  
   const heroesLoadingStatus = useSelector(
     (state) => state.heroes.heroesLoadingStatus
   );
 
-  const filteredHeroesSelector = createSelector(
-    (state) => state.filters.activeFilterElement,
-    (state) => state.heroes.heroes,
-    (filter, heroes) => {
-      if (filter === "all") {
-        return heroes;
-      } else {
-        return heroes.filter((item) => item.element === filter);
-      }
-    }
-  );
+  
 
   const filteredHeroes = useSelector(filteredHeroesSelector);
   const dispatch = useDispatch();
@@ -88,7 +76,7 @@ const HeroesList = () => {
     }
   };
 
-  const elements = renderHeroesList(heroes);
+  const elements = renderHeroesList(filteredHeroes);
   return <ul>{elements}</ul>;
 };
 
