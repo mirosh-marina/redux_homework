@@ -1,12 +1,6 @@
 {
   "heroes": [
     {
-      "name": "Sergei",
-      "description": "Плясать шо глухонямой",
-      "element": "fire",
-      "id": 1
-    },
-    {
       "name": "Wither",
       "description": "Сдавать хаты шо глухонямая",
       "element": "earth",
@@ -20,8 +14,8 @@
     },
     {
       "name": "Thor",
-      "description": "Плясать шо глухонямой",
-      "element": "wind",
+      "description": "sdfgsdfg",
+      "element": "water",
       "id": 5
     },
     {

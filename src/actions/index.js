@@ -1,31 +1,13 @@
-export const heroesFetching = () => {
-    return {
-        type: 'HEROES_FETCHING'
-    }
+import { heroesFetching, heroesFetched, heroesFetchingError } from "../components/heroesList/heroesSlice";
+
+export const fetchHeroes = (request) => (dispatch) => {
+	dispatch(heroesFetching());
+	request('http://localhost:3001/heroes')
+		.then(data => dispatch(heroesFetched(data)))
+		.catch(() => dispatch(heroesFetchingError()))
 }
 
-export const heroesFetched = (heroes) => {
-    return {
-        type: 'HEROES_FETCHED',
-        payload: heroes
-    }
-}
 
-export const heroesFetchingError = () => {
-    return {
-        type: 'HEROES_FETCHING_ERROR'
-    }
-}
-
-export const removeHero = (id) =>({
-	type: 'REMOVE_HERO',
-	payload: { id }
-})
-
-export const addNewHero = (data) =>({
-	type: 'ADD_HERO',
-	payload: data
-})
 
 export const filter = (element) =>({
 	type: 'FILTER',
@@ -37,6 +19,19 @@ export const delFilter = () => ({
 })
 
 export const addActiveBtn = (active) => ({
-	type: 'ACTIVE_BTN',
+	
+		
+			type: 'ACTIVE_BTN',
 	payload: active
+			
 })
+
+// export const addActiveBtn = (active) => (dispatch) => {
+// 	setTimeout(() => {
+// 		dispatch({
+// 			type: 'ACTIVE_BTN',
+// 	payload: active
+// 		})
+// 	}, 1000)
+	
+// }

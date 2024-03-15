@@ -2,7 +2,8 @@ import { Formik, Form, Field, ErrorMessage, useField } from "formik";
 import * as Yup from 'yup';
 import { useHttp } from "../../hooks/http.hook";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewHero, filter } from "../../actions";
+import { filter } from "../../actions";
+import { heroCreated } from "../heroesList/heroesSlice";
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
@@ -45,7 +46,7 @@ const HeroesAddForm = () => {
         "http://localhost:3001/heroes",
         "POST",
         JSON.stringify(values)
-      ).then((data) => dispatch(addNewHero(data)))
+      ).then((data) => dispatch(heroCreated(data)))
 				.then(data => isFilter(data));
 
 			
@@ -70,7 +71,7 @@ const HeroesAddForm = () => {
 						.required("Обязательное поле!"),
 					description: Yup.string()
 						.min(5, 'Минимум 5 символов')
-						.matches(/^\S.*\S$/, 'Имя не должно состоять только из пробелов')
+						.matches(/^\S.*\S$/, 'Описание не должно состоять только из пробелов')
 						.required('Обязательное поле!'),
 					element: Yup.string().required('Выберите элемент')
 				})}
