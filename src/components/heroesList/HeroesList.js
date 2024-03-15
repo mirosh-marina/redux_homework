@@ -23,7 +23,7 @@ const HeroesList = () => {
   );
 
   const filteredHeroesSelector = createSelector(
-    (state) => state.filters.activeBtn,
+    (state) => state.filters.activeFilterElement,
     (state) => state.heroes.heroes,
     (filter, heroes) => {
       if (filter === "all") {

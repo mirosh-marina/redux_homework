@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage, useField } from "formik";
 import * as Yup from 'yup';
 import { useHttp } from "../../hooks/http.hook";
 import { useDispatch, useSelector } from "react-redux";
-import { filter } from "../../actions";
+import { startFilter } from "../heroesFilters/filtersSlice";
 import { heroCreated } from "../heroesList/heroesSlice";
 
 // Задача для этого компонента:
@@ -32,11 +32,11 @@ const MyTextInput = ({ label, ...props }) => {
 const HeroesAddForm = () => {
   const dispatch = useDispatch();
   const { request } = useHttp();
-	const {startFilter, activeBtn } = useSelector(state => state.filters)
+	const {startFilter, activeFilterElement } = useSelector(state => state.filters)
 
 	const isFilter = (data) => {
-		if (startFilter === 'yes' && data.payload.element === activeBtn) {
-			dispatch(filter(data.payload.element))
+		if (startFilter === 'yes' && data.payload.element === activeFilterElement) {
+			dispatch(startFilter(data.payload.element))
 		}
 	}
 

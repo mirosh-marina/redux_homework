@@ -9,22 +9,6 @@ export const fetchHeroes = (request) => (dispatch) => {
 
 
 
-export const filter = (element) =>({
-	type: 'FILTER',
-	payload: element
-})
-
-export const delFilter = () => ({
-	type: 'DEL_FILTER'
-})
-
-export const addActiveBtn = (active) => ({
-	
-		
-			type: 'ACTIVE_BTN',
-	payload: active
-			
-})
 
 // export const addActiveBtn = (active) => (dispatch) => {
 // 	setTimeout(() => {

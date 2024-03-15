@@ -13,16 +13,22 @@
       "id": 4
     },
     {
-      "name": "Thor",
-      "description": "sdfgsdfg",
-      "element": "water",
-      "id": 5
-    },
-    {
       "name": "Spider-Man",
       "description": "Плясать шо глухонямой",
       "element": "fire",
       "id": 6
+    },
+    {
+      "name": "fgsd",
+      "description": "Плясать шо глухонямой",
+      "element": "fire",
+      "id": 7
+    },
+    {
+      "name": "Spider-Man",
+      "description": "Плясать шо глухонямой",
+      "element": "water",
+      "id": 8
     }
   ],
   "filters": [
