@@ -34,7 +34,7 @@ const HeroesAddForm = () => {
   const { request } = useHttp();
 	const {startFilter, activeFilterElement } = useSelector(state => state.filters)
 
-	const isFilter = (data) => {
+	const addHeroInFilter = (data) => {
 		if (startFilter === 'yes' && data.payload.element === activeFilterElement) {
 			dispatch(startFilter(data.payload.element))
 		}
@@ -47,7 +47,7 @@ const HeroesAddForm = () => {
         "POST",
         JSON.stringify(values)
       ).then((data) => dispatch(heroCreated(data)))
-				.then(data => isFilter(data));
+				.then(data => addHeroInFilter(data));
 
 			
 
